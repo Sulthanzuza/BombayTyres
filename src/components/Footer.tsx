@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-neutral-50 to-neutral-100 border-t border-neutral-200 overflow-hidden">
-      {/* Silk Background */}
+     
       <div className="absolute inset-0 opacity-30">
         <Silk
           speed={5}
@@ -22,20 +22,13 @@ const Footer = () => {
           rotation={0}
         />
       </div>
-      
-      {/* Content Overlay */}
+     
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
+        
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              {/* <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="p-2 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl shadow-lg"
-              >
-                <Zap className="h-6 w-6 text-white" />
-              </motion.div> */}
+              
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-neutral-800">Bombay Tyres</span>
                 
@@ -60,7 +53,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+         
           <div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -74,7 +67,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+        
           <div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-4">Our Expertise</h3>
             <ul className="space-y-2">
@@ -88,7 +81,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+      
           <div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-4">Get In Touch</h3>
             <div className="space-y-3">

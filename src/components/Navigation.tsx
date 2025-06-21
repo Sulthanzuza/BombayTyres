@@ -38,20 +38,14 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           
           <Link to="/" className="flex items-center space-x-3">
-            {/* <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
-              className="p-2 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl shadow-lg"
-            >
-             
-            </motion.div> */}
+            
             <div className="flex flex-col">
               <span className="text-xl font-bold text-neutral-800">Bombay Tyres</span>
               
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+         
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -74,7 +68,7 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+       
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-neutral-700 hover:text-indigo-600 transition-colors rounded-lg hover:bg-neutral-50"
@@ -84,7 +78,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+     
       <AnimatePresence>
         {isOpen && (
           <motion.div

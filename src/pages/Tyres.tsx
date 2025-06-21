@@ -146,7 +146,7 @@ const Tyres = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen pt-16"
     >
-      {/* Header */}
+
       <section className="py-20 bg-gradient-to-br from-neutral-200 via-zinc-150 to-zinc-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -163,7 +163,7 @@ const Tyres = () => {
         </div>
       </section>
 
-      {/* Tabs */}
+
            <section className="py-8 bg-neutral-100 sticky top-16 z-40 border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center  space-x-4">
@@ -190,11 +190,11 @@ const Tyres = () => {
         </div>
       </section>
 
-      {/* Filters */}
+
       <section className="py-8 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {/* Search */}
+         
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 h-5 w-5" />
               <input
@@ -206,7 +206,7 @@ const Tyres = () => {
               />
             </div>
 
-            {/* Brand Filter */}
+       
             <select
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
@@ -219,7 +219,7 @@ const Tyres = () => {
               <option value="pirelli">Pirelli</option>
             </select>
 
-            {/* Price Filter */}
+           
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
@@ -231,13 +231,13 @@ const Tyres = () => {
               <option value="ultra">Ultra Premium</option>
             </select>
 
-            {/* Sort */}
+          
             
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
+    
       <section className="py-12 bg-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
@@ -255,7 +255,7 @@ const Tyres = () => {
                     onClick={() => setSelectedTyre(tyre.id)}
                     className="bg-gradient-to-br from-neutral-50 to-neutral-100 rounded-2xl overflow-hidden border border-neutral-200 hover:border-zinc-300 transition-all cursor-pointer group hover:shadow-xl"
                   >
-                    {/* Product Image */}
+                  
                     <div className="relative h-48 bg-gradient-to-br from-neutral-100 to-neutral-200 overflow-hidden">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="h-32 w-32">
@@ -270,18 +270,18 @@ const Tyres = () => {
                       </div>
                     </div>
 
-                    {/* Product Info */}
+                    
                     <div className="p-6">
   <div className="mb-2">
-    <span className="text-sm text-neutral-700 font-medium">{tyre.brand}</span> {/* changed */}
+    <span className="text-sm text-neutral-700 font-medium">{tyre.brand}</span> 
   </div>
-  <h3 className="text-lg font-semibold text-neutral-800 mb-2 group-hover:text-neutral-700 transition-colors font-display"> {/* changed */}
+  <h3 className="text-lg font-semibold text-neutral-800 mb-2 group-hover:text-neutral-700 transition-colors font-display"> 
     {tyre.name}
   </h3>
   <p className="text-neutral-500 text-sm mb-2">{tyre.size}</p>
   <p className="text-neutral-600 text-sm mb-4">{tyre.description}</p>
 
-  {/* Features */}
+ 
   <div className="flex flex-wrap gap-1 mb-6">
     {tyre.features.slice(0, 2).map((feature, idx) => (
       <span
@@ -293,7 +293,7 @@ const Tyres = () => {
     ))}
   </div>
 
-  {/* Action Buttons */}
+
   <div className="flex space-x-2">
     <motion.button
       whileHover={{ scale: 1.05 }}

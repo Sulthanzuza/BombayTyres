@@ -91,7 +91,7 @@ const Contact = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen pt-16"
     >
-      {/* Hero Section */}
+  
       <section className="py-20 bg-gradient-to-br from-neutral-200 via-zinc-150 to-zinc-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -108,7 +108,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
+
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -134,11 +134,11 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Map */}
+   
       <section className="py-20 bg-gradient-to-br from-neutral-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+         
             <ScrollReveal>
               <div className="bg-white p-8 rounded-2xl border border-neutral-200 shadow-lg">
                 <h2 className="text-2xl font-bold text-neutral-800 mb-6 font-display">Get Expert Consultation</h2>
@@ -293,7 +293,7 @@ const Contact = () => {
             <ScrollReveal delay={0.2}>
   <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-lg h-full min-h-[400px]">
     <div className="h-full w-full relative">
-      {/* Google Map Embed */}
+   
       <iframe
         title="TyreForce Premium Center Map"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.0979959875117!2d76.81163842872621!3d8.726723724081362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05e9cfac309fdb%3A0xae3c3e9f2723350b!2sGoodyear%20Autocare%20-%20New%20Bombay%20Tyres!5e1!3m2!1sen!2sin!4v1750442726111!5m2!1sen!2sin" 

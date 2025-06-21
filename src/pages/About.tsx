@@ -43,7 +43,7 @@ const About = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen pt-16"
     >
-      {/* Hero */}
+    
       <section className="py-20 bg-gradient-to-br from-neutral-200 via-zinc-150 to-zinc-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -83,12 +83,12 @@ const About = () => {
         </div>
       </section>
 
-{/* Our Story */}
+
 <section
   className="py-20 bg-cover bg-center bg-no-repeat relative text-white"
   style={{ backgroundImage: `url(${storyBg})` }}
 >
-  {/* Dark overlay for readability */}
+
   <div className="absolute inset-0 bg-black/60  z-0" />
 
   <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,7 +106,7 @@ const About = () => {
 </section>
 
 
-      {/* Why Choose Us */}
+     
       <section className="py-20 bg-neutral-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

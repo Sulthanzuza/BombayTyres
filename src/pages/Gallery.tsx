@@ -118,7 +118,7 @@ const Gallery = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen pt-16"
     >
-      {/* Hero Section */}
+  
       <section className="py-20 bg-gradient-to-br from-neutral-200 via-zinc-150 to-zinc-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -136,7 +136,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Category Filter */}
+    
       <section className="py-8 bg-white sticky top-16 z-40 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-4 overflow-x-auto">
@@ -159,7 +159,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Gallery Grid */}
+  
       <section className="py-12 bg-gradient-to-br from-neutral-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
@@ -184,7 +184,7 @@ const Gallery = () => {
                         className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       
-                      {/* Overlay */}
+                      
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4 right-4">
                           <h3 className="text-lg font-semibold text-white mb-1 font-display">
@@ -210,7 +210,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
+      
       <AnimatePresence>
         {selectedImage && selectedImageData && (
           <motion.div
@@ -221,7 +221,7 @@ const Gallery = () => {
             onClick={closeLightbox}
           >
             <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
-              {/* Close Button */}
+             
               <button
                 onClick={closeLightbox}
                 className="absolute -top-12 right-0 text-white hover:text-primary-400 transition-colors z-10"
@@ -229,7 +229,7 @@ const Gallery = () => {
                 <X className="h-8 w-8" />
               </button>
 
-              {/* Navigation Buttons */}
+           
               <button
                 onClick={() => navigateImage('prev')}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary-400 transition-colors z-10"
@@ -244,7 +244,7 @@ const Gallery = () => {
                 <ChevronRight className="h-8 w-8" />
               </button>
 
-              {/* Image */}
+             
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}

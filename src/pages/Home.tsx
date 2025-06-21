@@ -1,9 +1,7 @@
 import React, { useState,useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei';
-import { motion,AnimatePresence } from 'framer-motion';
-import { Car, Bike, Search, Star, MessageCircle } from 'lucide-react';
-import { ArrowRight, Shield, Zap, Users, Award, Phone } from 'lucide-react';
+import { motion,AnimatePresence, useScroll, useTransform,useSpring  } from 'framer-motion';
+import { Car, Bike, Search,  MessageCircle } from 'lucide-react';
+import { ArrowRight,  Phone } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +15,7 @@ import haan from '/Hankook-logo-5500x1000.png'
 import pire from '/pirelli-logo-3400x955.png'
 import toyo from '/toyo.jpg'
 import yoko from '/yoko.jpg'
-import Aurora from '../components/Aurora';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -28,9 +26,9 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [priceRange, setPriceRange] = useState('all');
     const [brand, setBrand] = useState('all');
-   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Safely get the currently active item
+
+
 
     const carTyres = [
       {
@@ -147,6 +145,24 @@ const Home = () => {
       
       return matchesSearch && matchesBrand && matchesPrice;
     });
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"] 
+  });
+
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const rotateXOpposite = useTransform(scrollYProgress, [0, 1], [0, -360]);
+const smoothRotationLeft = useSpring(rotateX, {
+    damping: 30,
+    stiffness: 200,
+  });
+
+  const smoothRotationRight = useSpring(rotateXOpposite, {
+    damping: 30,
+    stiffness: 200,
+  });
   const companies = [
     { name: 'Michelin', logo: mich },
     { name: 'Bridgestone', logo:brid },
@@ -208,50 +224,43 @@ const navigate = useNavigate();
       exit={{ opacity: 0 }}
       className="min-h-screen"
     >
-      {/* Hero Section */}
+     
 <section 
   ref={heroRef} 
   className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-0"
 >
-  {/* Aurora Background - Fixed z-index
-  <div className="absolute inset-0 z-0">
-    <Aurora 
-      colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-      blend={0.5}
-      amplitude={1.0}
-      speed={0.5}
-    />
-  </div> */}
+ 
 
-  {/* Animated background elements - Fixed z-index and colors */}
+
   <motion.div className="absolute inset-0 z-10">
     <div className="absolute inset-0 bg-gradient-to-br from-neutral-100/60 via-zinc-50/60 to-zinc-100/60" />
   </motion.div>
 
-  {/* Left Tyre Animation - Fixed z-index */}
-  <motion.div
-    initial={{ x: -400, rotate: -180, opacity: 0, scale: 0.8 }}
-    animate={{ 
-      x: window.innerWidth < 768 ? -60 : window.innerWidth < 1024 ? -80 : window.innerWidth < 1280 ? -120 : -150, 
-      rotate: 0, 
-      opacity: 0.7, 
-      scale: 1 
-    }}
-    transition={{ 
-      duration: 1.8, 
-      delay: 0.5,
-      ease: "easeOut"
-    }}
-    className="absolute left-0 top-1/2 -translate-y-1/2 z-20"
-  >
+ 
+<motion.div
+          // 4. Apply the NEW smoothed value and the CSS class
+          style={{ rotate: smoothRotationLeft }} 
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 gpu-layer"
+          initial={{ x: -400, opacity: 0, scale: 0.8 }}
+          animate={{ 
+            x: typeof window !== 'undefined' && window.innerWidth < 768 ? -60 : typeof window !== 'undefined' && window.innerWidth < 1024 ? -80 : typeof window !== 'undefined' && window.innerWidth < 1280 ? -120 : -150, 
+            opacity: 0.7, 
+            scale: 1 
+          }}
+          transition={{ 
+            duration: 1.8, 
+            delay: 0.5,
+            ease: "easeOut"
+          }}
+        >
     <div className="relative">
-      {/* Responsive tyre image sizing */}
+   
       <img 
         src="/black-alloy-wheelwith-tyre-q9h2c4y9nd0gy6e4.png" 
         alt="Premium Tyre"
         className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] object-contain opacity-90"
       />
-      {/* Fallback if no image - Fixed visibility */}
+    
       <div className="absolute inset-0 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-4 sm:border-6 lg:border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-80 shadow-2xl">
         <div className="absolute inset-2 sm:inset-4 lg:inset-6 rounded-full border-2 sm:border-4 lg:border-6 border-neutral-600"></div>
         <div className="absolute inset-4 sm:inset-6 lg:inset-8 xl:inset-12 rounded-full border-2 sm:border-3 lg:border-4 border-neutral-500"></div>
@@ -259,22 +268,23 @@ const navigate = useNavigate();
     </div>
   </motion.div>
 
-  {/* Right Tyre Animation - Fixed z-index */}
-  <motion.div
-    initial={{ x: 400, rotate: 180, opacity: 0, scale: 0.8 }}
-    animate={{ 
-      x: window.innerWidth < 1280 ? 120 : 150, 
-      rotate: 0, 
-      opacity: 0.7, 
-      scale: 1 
-    }}
-    transition={{ 
-      duration: 1.8, 
-      delay: 0.7,
-      ease: "easeOut"
-    }}
-    className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
-  >
+ 
+   <motion.div
+          // 4. Apply the NEW smoothed value and the CSS class
+          style={{ rotate: smoothRotationRight }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:block gpu-layer"
+          initial={{ x: 400, opacity: 0, scale: 0.8 }}
+          animate={{ 
+            x: typeof window !== 'undefined' && window.innerWidth < 1280 ? 120 : 150, 
+            opacity: 0.7, 
+            scale: 1 
+          }}
+          transition={{ 
+            duration: 1.8, 
+            delay: 0.7,
+            ease: "easeOut"
+          }}
+        >
     <div className="relative">
       
       <img 
@@ -282,7 +292,7 @@ const navigate = useNavigate();
         alt="Performance Tyre"
         className="w-80 h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] object-contain opacity-90"
       />
-      {/* Fallback if no image - Fixed visibility */}
+
       <div className="absolute inset-0 w-80 h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-80 shadow-2xl">
         <div className="absolute inset-6 rounded-full border-6 border-neutral-600"></div>
         <div className="absolute inset-8 xl:inset-12 rounded-full border-4 border-neutral-500"></div>
@@ -290,7 +300,7 @@ const navigate = useNavigate();
     </div>
   </motion.div>
 
-  {/* Floating tyre particles - Fixed z-index and opacity */}
+
   <div className="absolute inset-0 pointer-events-none z-15">
     {Array.from({ length: 6 }).map((_, i) => (
       <motion.div
@@ -318,10 +328,10 @@ const navigate = useNavigate();
     ))}
   </div>
 
-  {/* Main Content - Fixed z-index */}
+
   <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div className="text-center space-y-8 bg-transparent">
-      {/* Main heading */}
+     
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -428,11 +438,11 @@ const navigate = useNavigate();
         </div>
       </section>
 
-      {/* Filters */}
+
       <section className="py-8 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {/* Search */}
+            
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 h-5 w-5" />
               <input
@@ -444,7 +454,7 @@ const navigate = useNavigate();
               />
             </div>
 
-            {/* Brand Filter */}
+           
             <select
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
@@ -457,7 +467,7 @@ const navigate = useNavigate();
               <option value="pirelli">Pirelli</option>
             </select>
 
-            {/* Price Filter */}
+          
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
@@ -469,13 +479,13 @@ const navigate = useNavigate();
               <option value="ultra">Ultra Premium</option>
             </select>
 
-            {/* Sort */}
+        
             
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
+     
       <section className="py-12 bg-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
@@ -493,7 +503,7 @@ const navigate = useNavigate();
                     onClick={() => setSelectedTyre(tyre.id)}
                     className="bg-gradient-to-br from-neutral-50 to-neutral-100 rounded-2xl overflow-hidden border border-neutral-200 hover:border-zinc-300 transition-all cursor-pointer group hover:shadow-xl"
                   >
-                    {/* Product Image */}
+              
                     <div className="relative h-48 bg-gradient-to-br from-neutral-100 to-neutral-200 overflow-hidden">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="h-32 w-32">
@@ -508,18 +518,18 @@ const navigate = useNavigate();
                       </div>
                     </div>
 
-                    {/* Product Info */}
+                   
                     <div className="p-6">
   <div className="mb-2">
-    <span className="text-sm text-neutral-700 font-medium">{tyre.brand}</span> {/* changed */}
+    <span className="text-sm text-neutral-700 font-medium">{tyre.brand}</span> 
   </div>
-  <h3 className="text-lg font-semibold text-neutral-800 mb-2 group-hover:text-neutral-700 transition-colors font-display"> {/* changed */}
+  <h3 className="text-lg font-semibold text-neutral-800 mb-2 group-hover:text-neutral-700 transition-colors font-display"> 
     {tyre.name}
   </h3>
   <p className="text-neutral-500 text-sm mb-2">{tyre.size}</p>
   <p className="text-neutral-600 text-sm mb-4">{tyre.description}</p>
 
-  {/* Features */}
+
   <div className="flex flex-wrap gap-1 mb-6">
     {tyre.features.slice(0, 2).map((feature, idx) => (
       <span
@@ -531,7 +541,7 @@ const navigate = useNavigate();
     ))}
   </div>
 
-  {/* Action Buttons */}
+
   <div className="flex space-x-2">
     <motion.button
       whileHover={{ scale: 1.05 }}
@@ -593,11 +603,11 @@ const navigate = useNavigate();
         </div>
       </section>
       <div className="w-full bg-gray-100">      
-      {/* Moving Logos Section */}
+      
       <div className="h-[70px] w-full overflow-hidden  shadow-2xl relative">
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>
         
-        {/* First row of logos */}
+      
         <div className="flex items-center h-full animate-scroll-right-to-left">
           {[...companies, ...companies,...companies].map((company, index) => (
             <div
