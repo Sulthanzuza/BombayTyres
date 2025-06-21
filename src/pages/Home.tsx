@@ -8,7 +8,16 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
-
+import mich from '/mich.jpg'
+import cont from '/conti.jpg'
+import brid from '/bridgestone-logo-2011-present-1536x1114.webp'
+import dun from '/dunlop.jpg'
+import good from '/Goodyear-Logo.png'
+import haan from '/Hankook-logo-5500x1000.png'
+import pire from '/pirelli-logo-3400x955.png'
+import toyo from '/toyo.jpg'
+import yoko from '/yoko.jpg'
+import Aurora from '../components/Aurora';
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -19,7 +28,10 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [priceRange, setPriceRange] = useState('all');
     const [brand, setBrand] = useState('all');
-  
+   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Safely get the currently active item
+
     const carTyres = [
       {
         id: 1,
@@ -135,7 +147,18 @@ const Home = () => {
       
       return matchesSearch && matchesBrand && matchesPrice;
     });
-  
+  const companies = [
+    { name: 'Michelin', logo: mich },
+    { name: 'Bridgestone', logo:brid },
+    { name: 'Goodyear', logo: good },
+    { name: 'Continental', logo: cont },
+    { name: 'Pirelli', logo: pire},
+    { name: 'Dunlop', logo: dun },
+    { name: 'Yokohama', logo: yoko },
+    { name: 'Hankook', logo: haan},
+    { name: 'Toyo Tires', logo: toyo }
+    
+  ];
     const handleCall = (phone: string) => {
       window.location.href = `tel:${phone}`;
     };
@@ -177,29 +200,6 @@ const navigate = useNavigate();
     });
   }, []);
 
-const expertise = [
-  {
-    icon: Shield,
-    title: 'Trusted Quality',
-    description: 'We stock only top-grade tyres from leading brands, ensuring long-lasting performance and road safety you can count on.'
-  },
-  {
-    icon: Zap,
-    title: 'Expert Service',
-    description: 'Our skilled technicians provide accurate fitting, alignment, and balancing — delivering a perfect ride every time.'
-  },
-  {
-    icon: Users,
-    title: 'Customer Satisfaction',
-    description: 'Thousands of happy customers trust us for our transparent pricing, honest recommendations, and attention to detail.'
-  },
-  {
-    icon: Award,
-    title: 'Reliable Support',
-    description: 'From purchase to after-sales assistance, our team is always here to help you with expert advice and quick support.'
-  }
-];
-
 
   return (
     <motion.div
@@ -211,16 +211,24 @@ const expertise = [
       {/* Hero Section */}
 <section 
   ref={heroRef} 
-  className="relative min-h-screen flex items-center justify-center overflow-hidden"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-0"
 >
-  {/* Animated background elements */}
-  <motion.div
-    className="absolute inset-0 -z-10"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-neutral-400 via-zinc-350 to-zinc-400" />
+  {/* Aurora Background - Fixed z-index
+  <div className="absolute inset-0 z-0">
+    <Aurora 
+      colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+      blend={0.5}
+      amplitude={1.0}
+      speed={0.5}
+    />
+  </div> */}
+
+  {/* Animated background elements - Fixed z-index and colors */}
+  <motion.div className="absolute inset-0 z-10">
+    <div className="absolute inset-0 bg-gradient-to-br from-neutral-100/60 via-zinc-50/60 to-zinc-100/60" />
   </motion.div>
 
-  {/* Left Tyre Animation - Responsive sizing */}
+  {/* Left Tyre Animation - Fixed z-index */}
   <motion.div
     initial={{ x: -400, rotate: -180, opacity: 0, scale: 0.8 }}
     animate={{ 
@@ -234,7 +242,7 @@ const expertise = [
       delay: 0.5,
       ease: "easeOut"
     }}
-    className="absolute left-0 top-1/2 -translate-y-1/2 z-0"
+    className="absolute left-0 top-1/2 -translate-y-1/2 z-20"
   >
     <div className="relative">
       {/* Responsive tyre image sizing */}
@@ -243,16 +251,15 @@ const expertise = [
         alt="Premium Tyre"
         className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] object-contain opacity-90"
       />
-      {/* Fallback if no image - decorative tyre shape */}
-      <div className="absolute inset-0 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-4 sm:border-6 lg:border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-20 shadow-2xl"
-           style={{ clipPath: 'inset(0 100% 0 0)' }}>
+      {/* Fallback if no image - Fixed visibility */}
+      <div className="absolute inset-0 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-4 sm:border-6 lg:border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-80 shadow-2xl">
         <div className="absolute inset-2 sm:inset-4 lg:inset-6 rounded-full border-2 sm:border-4 lg:border-6 border-neutral-600"></div>
         <div className="absolute inset-4 sm:inset-6 lg:inset-8 xl:inset-12 rounded-full border-2 sm:border-3 lg:border-4 border-neutral-500"></div>
       </div>
     </div>
   </motion.div>
 
-  {/* Right Tyre Animation - Only shows on larger screens to prevent overlap */}
+  {/* Right Tyre Animation - Fixed z-index */}
   <motion.div
     initial={{ x: 400, rotate: 180, opacity: 0, scale: 0.8 }}
     animate={{ 
@@ -266,26 +273,25 @@ const expertise = [
       delay: 0.7,
       ease: "easeOut"
     }}
-    className="absolute right-0 top-1/2 -translate-y-1/2 z-0 hidden lg:block"
+    className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
   >
     <div className="relative">
-      {/* Responsive tyre image sizing */}
+      
       <img 
         src="/performance-tirewith-alloy-wheel-46e8fisghdpvhwcj.png" 
         alt="Performance Tyre"
         className="w-80 h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] object-contain opacity-90"
       />
-      {/* Fallback if no image - decorative tyre shape */}
-      <div className="absolute inset-0 w-80 h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-20 shadow-2xl"
-           style={{ clipPath: 'inset(0 100% 0 0)' }}>
+      {/* Fallback if no image - Fixed visibility */}
+      <div className="absolute inset-0 w-80 h-80 lg:w-[28rem] lg:h-[28rem] xl:w-[36rem] xl:h-[36rem] rounded-full border-8 border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900 opacity-80 shadow-2xl">
         <div className="absolute inset-6 rounded-full border-6 border-neutral-600"></div>
         <div className="absolute inset-8 xl:inset-12 rounded-full border-4 border-neutral-500"></div>
       </div>
     </div>
   </motion.div>
 
-  {/* Floating tyre particles for extra effect */}
-  <div className="absolute inset-0 pointer-events-none">
+  {/* Floating tyre particles - Fixed z-index and opacity */}
+  <div className="absolute inset-0 pointer-events-none z-15">
     {Array.from({ length: 6 }).map((_, i) => (
       <motion.div
         key={i}
@@ -297,7 +303,7 @@ const expertise = [
         }}
         animate={{ 
           y: [null, typeof window !== 'undefined' ? Math.random() * window.innerHeight : Math.random() * 800],
-          opacity: [0, 0.2, 0],
+          opacity: [0, 0.4, 0],
           scale: [0, 1, 0],
           rotate: [0, 360]
         }}
@@ -312,10 +318,9 @@ const expertise = [
     ))}
   </div>
 
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-      className="text-center space-y-8 bg-transparent"
-    >
+  {/* Main Content - Fixed z-index */}
+  <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div className="text-center space-y-8 bg-transparent">
       {/* Main heading */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -394,68 +399,8 @@ const expertise = [
 </section>
 
 
-      <section className="py-20 bg-stone-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4 font-display">
-                Unmatched Expertise in Every Service
-              </h2>
-              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-                Our commitment to excellence drives every aspect of our service, from precision installation to performance optimization.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-  {expertise.map((item, index) => (
-    <ScrollReveal key={index} delay={index * 0.1}>
-      <motion.div
-        whileHover={{ y: -10 }}
-        className="bg-gradient-to-br from-neutral-50 to-neutral-100 p-8 rounded-2xl border border-neutral-200 hover:border-blue-300 transition-all group hover:shadow-lg h-80 flex flex-col"
-      >
-        <div className="mb-6">
-          <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:from-blue-600 group-hover:to-sky-700 transition-all shadow-lg">
-            <item.icon className="h-7 w-7 text-white" />
-          </div>
-        </div>
-        <h3 className="text-xl font-semibold text-blue-800 mb-3 font-display">
-          {item.title}
-        </h3>
-        <p className="text-neutral-600 leading-relaxed flex-1">
-          {item.description}
-        </p>
-      </motion.div>
-    </ScrollReveal>
-  ))}
-</div>
-        </div>
-      </section>
 
-      <section className="py-20 bg-gradient-to-r from-sky-600 to-indigo-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '1,500+', label: 'Satisfied Clients' },
-              { number: '100+', label: 'Premium Brands' },
-              { number: '20+', label: 'Years Excellence' },
-              { number: '24/7', label: 'Expert Support' }
-            ].map((stat, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2 font-display">
-                    {stat.number}
-                  </div>
-                  <div className="text-primary-100 font-medium mb-1">
-                    {stat.label}
-                  </div>
-                  
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
             <section className="py-8 bg-neutral-100 sticky top-16 z-40 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -622,6 +567,81 @@ const expertise = [
           </AnimatePresence>
         </div>
       </section>
+      
+      <section className="py-20 bg-gradient-to-r from-sky-600 to-indigo-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { number: '1,500+', label: 'Satisfied Clients' },
+              { number: '100+', label: 'Premium Brands' },
+              { number: '20+', label: 'Years Excellence' },
+              { number: '24/7', label: 'Expert Support' }
+            ].map((stat, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2 font-display">
+                    {stat.number}
+                  </div>
+                  <div className="text-primary-100 font-medium mb-1">
+                    {stat.label}
+                  </div>
+                  
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <div className="w-full bg-gray-100">      
+      {/* Moving Logos Section */}
+      <div className="h-[70px] w-full overflow-hidden  shadow-2xl relative">
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+        
+        {/* First row of logos */}
+        <div className="flex items-center h-full animate-scroll-right-to-left">
+          {[...companies, ...companies,...companies].map((company, index) => (
+            <div
+              key={`${company.name}-${index}`}
+              className="flex-shrink-0 mx-8  transition-all duration-300 hover:scale-105 hover:-translate-y-2"
+              style={{ minWidth: '160px', height: '70px' }}
+            >
+              <div className="flex items-center justify-center h-full ">
+                <img 
+                  src={company.logo}
+                  alt={`${company.name} logo`}
+                  className="max-h-16 max-w-32 object-contain "
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling.style.display = 'block';
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+  <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes scroll-right-to-left {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(-33.33%);
+            }
+          }
+          
+          .animate-scroll-right-to-left {
+            animation: scroll-right-to-left 30s linear infinite;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 300%;
+          }
+        `
+      }} />
+    </div>
     </motion.div>
   );
 };

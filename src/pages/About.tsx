@@ -33,50 +33,7 @@ const About = () => {
     }
   }, []);
 
-const coreValues = [
-  {
-    icon: Target,
-    title: 'Precision Fitment',
-    description:
-      'Each tyre is installed with pinpoint accuracy using advanced equipment, ensuring optimal performance and safety on every drive.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-  {
-    icon: Heart,
-    title: 'Customer-Centric Approach',
-    description:
-      'Your satisfaction is our mission. We offer personalized advice, transparent pricing, and after-sales support you can count on.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-  {
-    icon: Award,
-    title: 'Top-Tier Brands',
-    description:
-      'We partner with globally trusted tyre brands to offer you quality, durability, and superior road grip — every time.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Smart Tyre Solutions',
-    description:
-      'We stay ahead with innovations like nitrogen inflation, run-flat compatibility, and eco-friendly options tailored for modern vehicles.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-  {
-    icon: Shield,
-    title: 'Safety First',
-    description:
-      'All tyres undergo strict quality checks, and our services prioritize safety — so you can drive with complete confidence.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-  {
-    icon: Users,
-    title: 'Expert Team',
-    description:
-      'Certified professionals with years of experience deliver top-notch tyre services, from balancing and alignment to performance tuning.',
-    color: 'from-blue-800 to-indigo-400',
-  },
-];
+
 
 
   return (
@@ -149,38 +106,6 @@ const coreValues = [
 </section>
 
 
-
-
-      {/* Core Values */}
-      <section ref={visionRef} className="py-20 bg-gradient-to-br from-zinc-150 to-primary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4 font-display">Values That Drive Excellence</h2>
-              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-                Our core principles shape every interaction, service, and innovation, ensuring we consistently exceed expectations.
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreValues.map((value, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="vision-item text-center p-8 bg-white rounded-2xl border border-neutral-200 hover:border-blue-300 transition-all shadow-sm hover:shadow-xl group"
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                    <value.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-neutral-800 mb-4 font-display">{value.title}</h3>
-                  <p className="text-neutral-600 leading-relaxed">{value.description}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -193,17 +118,17 @@ const coreValues = [
             </div>
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
-                <ThumbsUp className="w-10 h-10 mx-auto text-primary-500 mb-4" />
+                <ThumbsUp className="w-10 h-10 mx-auto text-cyan-500 mb-4" />
                 <h4 className="text-lg font-semibold text-neutral-800 mb-2">Trusted by Thousands</h4>
                 <p className="text-neutral-600">Our reputation is built on trust, transparency, and timely service.</p>
               </div>
               <div>
-                <Briefcase className="w-10 h-10 mx-auto text-primary-500 mb-4" />
+                <Briefcase className="w-10 h-10 mx-auto text-cyan-500 mb-4" />
                 <h4 className="text-lg font-semibold text-neutral-800 mb-2">Professionally Certified</h4>
                 <p className="text-neutral-600">Certified technicians and state-of-the-art technology ensure precision.</p>
               </div>
               <div>
-                <Smile className="w-10 h-10 mx-auto text-primary-500 mb-4" />
+                <Smile className="w-10 h-10 mx-auto text-cyan-500 mb-4" />
                 <h4 className="text-lg font-semibold text-neutral-800 mb-2">Customer-Centric</h4>
                 <p className="text-neutral-600">We personalize every experience, making your satisfaction our top priority.</p>
               </div>
