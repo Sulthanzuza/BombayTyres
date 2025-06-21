@@ -237,8 +237,7 @@ const navigate = useNavigate();
   </motion.div>
 
  
-<motion.div
-          // 4. Apply the NEW smoothed value and the CSS class
+ <motion.div
           style={{ rotate: smoothRotationLeft }} 
           className="absolute left-0 top-1/2 -translate-y-1/2 z-20 gpu-layer"
           initial={{ x: -400, opacity: 0, scale: 0.8 }}
