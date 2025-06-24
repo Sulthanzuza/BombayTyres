@@ -13,107 +13,107 @@ const Tyres = () => {
   const [priceRange, setPriceRange] = useState('all');
   const [brand, setBrand] = useState('all');
 
-  const carTyres = [
-    {
-      id: 1,
-      name: 'Michelin Pilot Sport 4S',
-      brand: 'Michelin',
-      size: '225/45R17',
-      price: 'Premium Range',
-      rating: 4.9,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Ultra High Performance', 'Track-Ready', 'All-Weather Grip'],
-      description: 'Ultimate performance tyre for sports cars and high-performance vehicles.',
-      phone: '+1-555-TYRE-001'
-    },
-    {
-      id: 2,
-      name: 'Continental PremiumContact 6',
-      brand: 'Continental',
-      size: '205/55R16',
-      price: 'Mid-Premium',
-      rating: 4.7,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Comfort Plus', 'Fuel Efficient', 'Silent Drive'],
-      description: 'Perfect balance of comfort, efficiency, and performance for luxury sedans.',
-      phone: '+1-555-TYRE-002'
-    },
-    {
-      id: 3,
-      name: 'Bridgestone Turanza T005',
-      brand: 'Bridgestone',
-      size: '245/40R18',
-      price: 'Premium Range',
-      rating: 4.8,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Wet Weather Master', 'Long Lasting', 'Precision Handling'],
-      description: 'Advanced wet weather performance with exceptional durability.',
-      phone: '+1-555-TYRE-003'
-    },
-    {
-      id: 4,
-      name: 'Pirelli P Zero',
-      brand: 'Pirelli',
-      size: '195/65R15',
-      price: 'Ultra Premium',
-      rating: 4.9,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Racing Heritage', 'Maximum Grip', 'Precision Control'],
-      description: 'Formula 1 technology adapted for road use, delivering unmatched performance.',
-      phone: '+1-555-TYRE-004'
-    }
-  ];
-
-  const bikeTyres = [
-    {
-      id: 5,
-      name: 'Pirelli Diablo Rosso IV',
-      brand: 'Pirelli',
-      size: '120/70-17',
-      price: 'Premium Range',
-      rating: 4.9,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Track Performance', 'Street Legal', 'Maximum Lean Angle'],
-      description: 'Professional racing technology for street and track enthusiasts.',
-      phone: '+1-555-BIKE-001'
-    },
-    {
-      id: 6,
-      name: 'Michelin Road 5 Trail',
-      brand: 'Michelin',
-      size: '180/55-17',
-      price: 'Mid-Premium',
-      rating: 4.8,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Adventure Ready', 'All-Terrain', 'Long Distance'],
-      description: 'Engineered for adventure touring and long-distance riding comfort.',
-      phone: '+1-555-BIKE-002'
-    },
-    {
-      id: 7,
-      name: 'Bridgestone Battlax Hypersport S22',
-      brand: 'Bridgestone',
-      size: '120/70-17',
-      price: 'Premium Range',
-      rating: 4.7,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Hypersport Technology', 'Corner Stability', 'Quick Warm-up'],
-      description: 'Advanced compound technology for superior grip and handling precision.',
-      phone: '+1-555-BIKE-003'
-    },
-    {
-      id: 8,
-      name: 'Continental ContiRoadAttack 3',
-      brand: 'Continental',
-      size: '160/60-17',
-      price: 'Mid-Premium',
-      rating: 4.6,
-      image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
-      features: ['Sport Touring', 'All-Weather', 'Mileage Plus'],
-      description: 'Versatile performance for sport touring and everyday riding excellence.',
-      phone: '+1-555-BIKE-004'
-    }
-  ];
+    const carTyres = [
+      {
+        id: 1,
+        name: 'Michelin Pilot Sport 4S',
+        brand: 'Michelin',
+        size: '225/45R17',
+        price: 'Premium Range',
+        rating: 4.9,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Ultra High Performance', 'Track-Ready', 'All-Weather Grip'],
+        description: 'Ultimate performance tyre for sports cars and high-performance vehicles.',
+        phone: '9633752092'
+      },
+      {
+        id: 2,
+        name: 'Continental PremiumContact 6',
+        brand: 'Continental',
+        size: '205/55R16',
+        price: 'Mid-Premium',
+        rating: 4.7,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Comfort Plus', 'Fuel Efficient', 'Silent Drive'],
+        description: 'Perfect balance of comfort, efficiency, and performance for luxury sedans.',
+        phone: '9633752092'
+      },
+      {
+        id: 3,
+        name: 'Bridgestone Turanza T005',
+        brand: 'Bridgestone',
+        size: '245/40R18',
+        price: 'Premium Range',
+        rating: 4.8,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Wet Weather Master', 'Long Lasting', 'Precision Handling'],
+        description: 'Advanced wet weather performance with exceptional durability.',
+        phone: '9633752092'
+      },
+      {
+        id: 4,
+        name: 'Pirelli P Zero',
+        brand: 'Pirelli',
+        size: '195/65R15',
+        price: 'Ultra Premium',
+        rating: 4.9,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Racing Heritage', 'Maximum Grip', 'Precision Control'],
+        description: 'Formula 1 technology adapted for road use, delivering unmatched performance.',
+        phone: '9633752092'
+      }
+    ];
+  
+    const bikeTyres = [
+      {
+        id: 5,
+        name: 'Pirelli Diablo Rosso IV',
+        brand: 'Pirelli',
+        size: '120/70-17',
+        price: 'Premium Range',
+        rating: 4.9,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Track Performance', 'Street Legal', 'Maximum Lean Angle'],
+        description: 'Professional racing technology for street and track enthusiasts.',
+        phone: '9633752092'
+      },
+      {
+        id: 6,
+        name: 'Michelin Road 5 Trail',
+        brand: 'Michelin',
+        size: '180/55-17',
+        price: 'Mid-Premium',
+        rating: 4.8,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Adventure Ready', 'All-Terrain', 'Long Distance'],
+        description: 'Engineered for adventure touring and long-distance riding comfort.',
+        phone: '9633752092'
+      },
+      {
+        id: 7,
+        name: 'Bridgestone Battlax Hypersport S22',
+        brand: 'Bridgestone',
+        size: '120/70-17',
+        price: 'Premium Range',
+        rating: 4.7,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Hypersport Technology', 'Corner Stability', 'Quick Warm-up'],
+        description: 'Advanced compound technology for superior grip and handling precision.',
+        phone: '9633752092'
+      },
+      {
+        id: 8,
+        name: 'Continental ContiRoadAttack 3',
+        brand: 'Continental',
+        size: '160/60-17',
+        price: 'Mid-Premium',
+        rating: 4.6,
+        image: 'https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=500',
+        features: ['Sport Touring', 'All-Weather', 'Mileage Plus'],
+        description: 'Versatile performance for sport touring and everyday riding excellence.',
+        phone: '9633752092'
+      }
+    ];
 
   const currentTyres = activeTab === 'car' ? carTyres : bikeTyres;
 
